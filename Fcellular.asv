@@ -1,0 +1,58 @@
+function[average_P,cost]=Fcellular(Y,m,number_T,L,B,shape_matrix_value,Vmax,a,b)
+%Y is plazalength 人工默认给20    15~21 %这个参数变shape_matrix也要变
+%m 合并模式  [3 3 3]   length(m)=L,sum(m)=B
+%number_T  T*60
+%L 车道数 3  最好为奇数 修改这个也要修改上面的shape_matrix
+%B 收费站数 9    
+%shape_matrix_value  [13 7 1 0 0 0 1 7 13]%这是一个1xB维矩阵，决定广场形状
+    %保证中心最左边0位置满足左边非0元素个数为ceil(B/2-L/2)
+    %二边至少为1
+%Vmax 10.1 %定义交通道上最大速度  cell/s 为了保证和0格没车区别
+%%
+
+%%%average_P 车祸风险   cost 成本
+
+clear all;
+W = 0;
+%Different_P=zeros(1,7);
+cost = (Y-1)*B-
+
+for j = 0
+    global shape_matrix;
+    shape_matrix=shape_matrix_value; 
+    T = 24; %  hrs to simulate
+    global plazalength;
+    plazalength=Y;%
+ 
+    paths=path_line(B,m,L);  %得到路径规划,paths是一个1x8 cell
+    plaza = create_plaza(B,L);
+    %====================================================
+    h = show_plaza(plaza,B,NaN);                        %    
+    %====================================================
+    entry_vector = create_entry(T,B,number_T);
+    %waiting_time = 0;
+    %output = 0;
+    %pause;
+    accident_P=[];
+    
+    for i = 1:number_T
+        plaza = move_forward(plaza,Vmax,paths); %move cars forward
+        plaza = new_cars(plaza, entry_vector(i)); %allow new cars to enter
+        accident_P=[accident_P compute_accident(plaza,Vmax,paths)];
+        %plaza = switch_lanes(plaza); %allow lane changes
+        %compute waiting time during timestep i
+        %waiting_time = waiting_time + compute_wait(plaza); 
+        %output = output + compute_output(plaza);
+        %===============================================
+        %h = show_plaza(plaza,B,h);                     %
+        %drawnow 
+        %pause(2);
+        %===============================================
+        plaza = clear_boundary(plaza);
+    end
+    %show_plaza(plaza,B,h); 
+    average_P=sum(accident_P)/length(accident_P);
+    %Different_P(j)=average_P;
+    %xlabel(['Probability of accident is ' num2str(average_P)]);
+end
+end
