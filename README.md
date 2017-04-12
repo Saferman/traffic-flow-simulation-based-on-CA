@@ -10,7 +10,7 @@ Therefore, I am willing to make a simple matlab tool which can be used to do tra
 ### 1. the structure of my tool
 Here is a picture showing the crucial ralationships among the .m files:  
   
-![Image text](https://github.com/Saferman/traffic-flow-simulation-based-on-CA/tree/master/images/structure.png)
+![Screenshot](https://github.com/Saferman/traffic-flow-simulation-based-on-CA/tree/master/images/structure.png)
 
 As you can see, there is a main function called "cellularF", which includes some important parameters such as the shape parameters of the toll plaza, the time of simulation, etc.
 
@@ -51,7 +51,7 @@ Here are my examples :
   
 The result:  
   
-![Image text](https://github.com/Saferman/traffic-flow-simulation-based-on-CA/tree/master/images/running2.png)
+![Screenshot](https://github.com/Saferman/traffic-flow-simulation-based-on-CA/tree/master/images/running2.png)
 
 More details or usages of cellularF is coming soon in wiki. 
 
