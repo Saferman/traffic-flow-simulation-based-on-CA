@@ -9,7 +9,7 @@ Therefore, I am willing to make a simple matlab tool which can be used to do tra
 
 ### 1. the structure of my tool
 Here is a picture showing the crucial ralationships among the .m files:  
-
+![structe](https://github.com/Saferman/traffic-flow-simulation-based-on-CA/tree/master/images/structure.png)
 
 As you can see, there is a main function called "cellularF", which includes some important parameters such as the shape parameters of the toll plaza, the time of simulation, etc.
 
@@ -25,31 +25,46 @@ Different from the other similar programs, my tool has these particular characte
 ### 3. how to use the tool
 As I mentioned above, you can just easily use the tool by calling a functioncalled "cellularF". The function with parameters is below:  
   
-<code>
-function [average\_P,cost,W]=cellularF(Y,m,number\_T,L,B,shape\_matrix\_value,Vmax,autoVmax,ak,a,bm,bMAT,bEAT,bECT,lamda,draw)  
+<code>function [average\_P,cost,W]=cellularF(Y,m,number\_T,L,B,shape\_matrix\_value,Vmax,autoVmax,ak,a,bm,bMAT,bEAT,bECT,lamda,draw)   
+  
 % Y stands for the length of plaza.  
+  
 % m is a 1xL matrix which is used to determine merging pattern of the area following the toll barrier in which vehicles fan in from B tollbooth egress lanes down to L lanes of traffic.  
+  
 % number\_T means how many parts you want discretize one day to  
+  
 % L means the number of lanes  
+  
 % B means the number of  tollbooths 
+  
 % shape\_matrix\_value is a matrix to determine the shape of the plaza  
+  
 % Vmax means the highest speed of common vehicles  
+  
 % autoVmax means the highest speed of autonomous (self-driving) vehicles  
+  
 % ak is a percent of autonomous vehicles in the whole vehicles  
+  
 % a is the cost of a discrete unit of the plaza  
+  
 % bm is a 1xL matrix which is used to appoint the number of conventional(human-staffed) tollbooths, exact-change(automated) tollbooths and electronic toll collection booths(such as electronic toll collection via a transponder in the vehicle).  
+  
 % bMAT,bEAT,bECT stand for the cost of conventional(human-staffed) tollbooths, exact-change(automated) tollbooths and electronic toll collection booths respectively.  
+  
 % lamda is a parameter used in the poisson model. The bigger lamda is, the more vehicles there wiil be.  
+  
 % draw is used to choose usage method. If draw equals 1, the program will run with real-time display of the plaza. If draw equals 0, the program will run without any display.  
   
 % average\_P,cost,W stand for total Accident risk, total cost and  throughput (number of vehicles per hour passing the point where the end of the plaza joins the L outgoing traffic lanes) respectively. 
 </code> 
   
 Here are my examples :  
-<code>
-[average\_P,cost,W]=cellularF(21,[1 6 2],24,3,9,[5 2 1 0 0 0 1 2 5],8.1,10.2,0,4,[0 4 5],8,5,5,10000,1)  
+<code>[average\_P,cost,W]=cellularF(21,[1 6 2],24,3,9,[5 2 1 0 0 0 1 2 5],8.1,10.2,0,4,[0 4 5],8,5,5,10000,1)  
 [average\_P,cost,W]=cellularF(21,[1 6 2],24*3600,3,9,[5 2 1 0 0 0 1 2 5],8.1,10.2,0,4,[0 4 5],8,5,5,400000,1)
 </code>  
+  
+The result:  
+![structe](https://github.com/Saferman/traffic-flow-simulation-based-on-CA/tree/master/images/running2.png)
 
 More details or usages of cellularF is coming soon in wiki. 
 
