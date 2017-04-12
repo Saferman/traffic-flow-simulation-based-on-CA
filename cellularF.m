@@ -1,6 +1,6 @@
-function [average_P,cost,W]=cellularF(Y,m,number_T,L,B,shape_matrix_value,Vmax,autoVmax,ak,a,bm,bMAT,bEAT,bECT,lamda)
-%[average_P,cost,W]=cellularF(21,[1 6 2],24,3,9,[5 2 1 0 0 0 1 2 5],8.1,10.2,0,4,[0 4 5],8,5,5,10000)
-
+function [average_P,cost,W]=cellularF(Y,m,number_T,L,B,shape_matrix_value,Vmax,autoVmax,ak,a,bm,bMAT,bEAT,bECT,lamda, draw)
+%[average_P,cost,W]=cellularF(21,[1 6 2],24,3,9,[5 2 1 0 0 0 1 2 5],8.1,10.2,0,4,[0 4 5],8,5,5,10000,1)
+%[average_P,cost,W]=cellularF(21,[1 6 2],24*3600,3,9,[5 2 1 0 0 0 1 2 5],8.1,10.2,0,4,[0 4 5],8,5,5,400000,1)
 %%
 W = 0;
 %Different_P=zeros(1,7);
@@ -30,9 +30,11 @@ for j = 0
         accident_P=[accident_P compute_accident(plaza,Vmax,autoVmax,paths)];
         %plaza
         %===============================================
-        %h = show_plaza(plaza,B,h);                     %
-        %drawnow 
-        %pause(1);
+        if draw == 1
+            h = show_plaza(plaza,B,h);                     %
+            drawnow 
+            %pause(1);
+        end
         %===============================================
         plaza = clear_boundary(plaza);
     end
@@ -42,6 +44,6 @@ for j = 0
     %xlabel(['Probability of accident is ' num2str(average_P)]);
 end
 W=sum(entry_vector)/24;
-show_plaza(tem,B,h);
+%show_plaza(tem,B,h);
 xlabel(['P=' num2str(average_P)  ' T=' num2str(W*60) ' W=' num2str(cost)]);
 end
