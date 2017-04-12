@@ -29,14 +29,14 @@ As I mentioned above, you can just easily use the tool by calling a functioncall
     function [average\_P,cost,W]=cellularF(Y,m,number\_T,L,B,shape\_matrix\_value,Vmax,autoVmax,ak,a,bm,bMAT,bEAT,bECT,lamda,draw)  
     % Y stands for the length of plaza. 
     % m is a 1xL matrix which is used to determine merging pattern of the area following the toll barrier in which vehicles fan in from B tollbooth egress lanes down to L lanes of traffic.  
-    % number\_T means how many parts you want discretize one day to  
-    % L means the number of lanes  
-    % B means the number of  tollbooths 
-    % shape\_matrix\_value is a matrix to determine the shape of the plaza  
-    % Vmax means the highest speed of common vehicles  
-    % autoVmax means the highest speed of autonomous (self-driving) vehicles  
-    % ak is a percent of autonomous vehicles in the whole vehicles  
-    % a is the cost of a discrete unit of the plaza  
+    % number\_T means how many parts you want discretize one day to.  
+    % L means the number of lanes.  
+    % B means the number of  tollbooths. 
+    % shape\_matrix\_value is a matrix to determine the shape of the plaza.  
+    % Vmax means the highest speed of common vehicles.  
+    % autoVmax means the highest speed of autonomous (self-driving) vehicles.  
+    % ak is a percent of autonomous vehicles in the whole vehicles.  
+    % a is the cost of a discrete unit of the plaza.  
     % bm is a 1xL matrix which is used to appoint the number of conventional(human-staffed) tollbooths, exact-change(automated) tollbooths and electronic toll collection booths(such as electronic toll collection via a transponder in the vehicle).  
     % bMAT,bEAT,bECT stand for the cost of conventional(human-staffed) tollbooths, exact-change(automated) tollbooths and electronic toll collection booths respectively.  
     % lamda is a parameter used in the poisson model. The bigger lamda is, the more vehicles there wiil be.  
